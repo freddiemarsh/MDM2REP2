@@ -7,7 +7,7 @@ function [total_forcex, total_forcey] = wallforce(xp,yp)
 % one point in time.
 
 
-k = 1;
+k = 0.1;
 
 
 %assumes 0,0 is centre of the room

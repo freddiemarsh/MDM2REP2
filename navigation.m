@@ -20,6 +20,8 @@ function [xforce,yforce] = navigation(xp,yp,tx,ty,vx,vy,desired_speed)
 ex = tx - xp;
 xforce = (desired_speed.*ex - vx);
 
+% Broken
+
 %% Force in y
 
 ey = ty - yp;

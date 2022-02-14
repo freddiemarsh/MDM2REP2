@@ -1,5 +1,4 @@
-
-function [x_position_matrix, y_position_matrix, x_velocity_matrix, y_velocity_matrix, x_acceleration_matrix, y_acceleration_matrix] = filereader4(filepath)
+function [x_position_matrix, y_position_matrix, x_velocity_matrix, y_velocity_matrix, x_acceleration_matrix, y_acceleration_matrix] = filereader5(filepath)
 
 
 
@@ -10,16 +9,14 @@ A = readmatrix(filepath);
 
 %% Cleans data to just the x and y positions then calculates the velocity and acceleration
 
-x_position_matrix = A(6:6:end,:);
-y_position_matrix = A(7:6:end,:);
+x_position_matrix = A(6:6:end,:)';
+y_position_matrix = A(7:6:end,:)';
 
 x_velocity_matrix = velocity_matrix(x_position_matrix);
 y_velocity_matrix = velocity_matrix(y_position_matrix);
 
 x_acceleration_matrix = acceleration_matrix(x_position_matrix);
 y_acceleration_matrix = acceleration_matrix(y_position_matrix);
-
-
 
 
 
