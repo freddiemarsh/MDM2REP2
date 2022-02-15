@@ -28,7 +28,7 @@ end
 
 f = @(a,xforcewall,xforceprox,xforcenav) sum(sum(abs(a(1) .* xforcewall + a(2) .* xforceprox +a(3) .* xforcenav - ax)+abs(a(1) .* yforcewall + a(2) .* yforceprox +a(3) .* yforcenav - ay)));
 fun = @(a)f(a,xforcewall,xforceprox,xforcenav);
-optimal_alpha = fminsearch(fun,a0);
+optimal_alpha = fminsearch(fun,a0)
 
 socialForceWeighting = optimal_alpha/norm(optimal_alpha);
 

@@ -7,7 +7,7 @@ function [total_forcex, total_forcey] = wallforce(xp,yp)
 % one point in time.
 
 
-k = 0.1;
+k = 1;
 
 
 %assumes 0,0 is centre of the room
@@ -25,8 +25,8 @@ wally1force = -exp(-distancefromwally1./k);
 
 wally2 = -100;
 distancefromwally2 = abs(wally2 - yp);
-wally2force = -exp(-distancefromwally2./k);
+wally2force = exp(-distancefromwally2./k);
 
-total_forcex = wallx1force + wallx2force;
-total_forcey = wally1force + wally2force;
+total_forcex = (wallx1force + wallx2force)./norm(wallx1force + wallx2force);
+total_forcey = (wally1force + wally2force)./norm(wally1force + wally2force);
 

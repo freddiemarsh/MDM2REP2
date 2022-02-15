@@ -18,11 +18,10 @@ ydistance = zeros([nRows,nCol]);
 
 for j = 1:nCol
     for i = 1:nRows
-        hi = xp(i,j);
         xpos = xp(:,j);
         ypos = yp(:,j);
         nearx = xpos - xp(i,j);
-        neary = yp - yp(i,j);
+        neary = ypos - yp(i,j);
         nearx(i) = 100000;
         neary(i) = 100000;
     

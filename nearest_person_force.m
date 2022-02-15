@@ -15,8 +15,8 @@ k = 1;
 
 [xdistance,ydistance] = nearest_person_finder(xp,yp);
 
-xforce = exp(-xdistance./k);
-yforce = exp(-ydistance./k);
+xforce = exp(-xdistance./k)./norm(exp(-xdistance./k));
+yforce = exp(-ydistance./k)./norm(exp(-ydistance./k));
 
 end
 

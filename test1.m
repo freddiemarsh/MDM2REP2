@@ -1,4 +1,4 @@
-[xp,yp,vx,vy,ax,ay] = filereader4('/Users/freddiemarsh/Documents/ENGMATHS Y2/MDM2/Group REP 2/model/Output/simulation_output_empty_room.txt');
+[xp,yp,vx,vy,ax,ay] = filereader5('/Users/freddiemarsh/Documents/ENGMATHS Y2/MDM2/Group REP 2/model/Output/simulation_output_empty_room.txt');
 tx = 10;
 ty = 10;
 desired_speed = 4;
@@ -18,7 +18,7 @@ f = @(a,xforcewall,xforceprox,xforcenav) sum(sum(abs(a(1) .* xforcewall + a(2) .
 
 fuckthis = f(a0,xforcewall,xforceprox,xforcenav);
 
-fun = @(a)f(a,xforcewall,xforceprox,xforcenav);
+fun = @(a) f(a,xforcewall,xforceprox,xforcenav);
 optimal_alpha = fminsearch(fun,a0);
 fcheck = @(alpha,xforcewall,xforceprox,xforcenav) alpha(1) .* xforcewall + alpha(2) .* xforceprox +alpha(3) .* xforcenav - ax;
 hello = fcheck(optimal_alpha,xforcewall,xforceprox,xforcenav);
