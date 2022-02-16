@@ -1,4 +1,4 @@
-function [socialForceWeighting] = socialForceWeighting(filepath,tx,ty,desired_speed)
+function [socialForceWeighting,optimal_alpha] = socialForceWeighting(filepath,tx,ty,desired_speed)
 %% INPUTS
 %filepath = filepath of outputted data from a simulation
 % tx,ty (optional) = x and y coordinates of target destination for navigation
@@ -23,12 +23,14 @@ else
 end
 
 [xforceprox,yforceprox] = nearest_person_force(xp,yp);
-[xforcewall, yforcewall] = wallforce(xp,yp);
+[xforcewall, yforcewall] = wallforceWithGap(xp,yp);
 
 
-f = @(a,xforcewall,xforceprox,xforcenav) sum(sum(abs(a(1) .* xforcewall + a(2) .* xforceprox +a(3) .* xforcenav - ax)+abs(a(1) .* yforcewall + a(2) .* yforceprox +a(3) .* yforcenav - ay)));
-fun = @(a)f(a,xforcewall,xforceprox,xforcenav);
-optimal_alpha = fminsearch(fun,a0)
+f = @(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav) sum(sum(abs(a(1) .* xforcewall + a(2) .* xforceprox +a(3) .* xforcenav - ax)+abs(a(1) .* yforcewall + a(2) .* yforceprox +a(3) .* yforcenav - ay)));
+fun = @(a)f(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav);
+optimal_alpha = fminsearch(fun,a0);
+
+
 
 socialForceWeighting = optimal_alpha/norm(optimal_alpha);
 

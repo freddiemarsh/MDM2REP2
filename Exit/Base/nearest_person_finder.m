@@ -1,4 +1,4 @@
-function [xdistance,ydistance] = nearest_person_finderbackup(xpos,ypos)
+function [xdistance,ydistance] = nearest_person_finder(xp,yp)
 
 %[xdistance,ydistance]
 %% OUTPUTS
@@ -10,18 +10,18 @@ function [xdistance,ydistance] = nearest_person_finderbackup(xpos,ypos)
 
 
 
-nRows = size(xpos,1);
-nCol = size(xpos,2);
+nRows = size(xp,1);
+nCol = size(xp,2);
 xdistance = zeros([nRows,nCol]);
 ydistance = zeros([nRows,nCol]);
 
 
 for j = 1:nCol
     for i = 1:nRows
-        hi = xpos(i)
-        xpos = xpos
-        nearx = xpos - xpos(i)
-        neary = ypos - ypos(i);
+        xpos = xp(:,j);
+        ypos = yp(:,j);
+        nearx = xpos - xp(i,j);
+        neary = ypos - yp(i,j);
         nearx(i) = 100000;
         neary(i) = 100000;
     
@@ -29,11 +29,9 @@ for j = 1:nCol
     
         mag = magnitudefinder(nearx,neary);
         [M,k] = min(mag);
-        size
-        xdistance(i) = nearx(k);
-        ydistance(i) = neary(k);
+        xdistance(i,j) = nearx(k);
+        ydistance(i,j) = neary(k);
     end
     
 end
-
 end
