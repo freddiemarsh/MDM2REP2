@@ -29,7 +29,9 @@ end
 
 f = @(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav) sum(sum(abs(a(1) .* xforcewall + a(2) .* xforceprox +a(3) .* xforcenav - ax)+abs(a(1) .* yforcewall + a(2) .* yforceprox +a(3) .* yforcenav - ay)));
 fun = @(a)f(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav);
-optimal_alpha = fminsearch(fun,a0);
+% optimal_alpha = fminsearch(fun,a0);
+
+optimal_alpha = fmincon(fun,a0,[],[],[1,1,1],1,[0,0,0],[1,1,1]);
 
 
 
