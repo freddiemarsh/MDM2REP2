@@ -55,10 +55,10 @@ for j = 1:nCol
 
     end
 end
-if xNearforce ~= 0
+if xNearForce ~= 0
     xNearForce = xNearForce/norm(xNearForce);
 end
-if yNearforce ~= 0
+if yNearForce ~= 0
     yNearForce = yNearForce/norm(yNearForce);
 end
 end

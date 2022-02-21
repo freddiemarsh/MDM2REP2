@@ -36,7 +36,7 @@ fun = @(a)f(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav,xF
 
 
 %optimal_alpha = fminsearch(fun,a0);
-optimal_alpha = fmincon(fun,a0,[],[],[1,1,1,1,1],1,[0,0,0,0,0],[1,1,1,1,1]);
+optimal_alpha = fmincon(fun,a0,[],[],[],[],[0,0,0,0,0],[1,1,1,0,1]);
 
 
 socialForceWeighting = optimal_alpha/norm(optimal_alpha);
