@@ -12,7 +12,6 @@ function [xdistance,ydistance] = nearest_person_finder(xp,yp)
 
 nRows = size(xp,1);
 nCol = size(xp,2);
-nCol2 = size(yp,2);
 xdistance = zeros([nRows,nCol]);
 ydistance = zeros([nRows,nCol]);
 

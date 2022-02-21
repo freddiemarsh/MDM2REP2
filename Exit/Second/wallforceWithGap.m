@@ -1,4 +1,4 @@
-function [total_forcex, total_forcey] = wallforce(xp,yp)
+function [total_forcex, total_forcey] = wallforceWithGap(xp,yp)
 %% OUTPUTS
 % xforce,yforce = resulting repelant force from walls.
 
@@ -8,24 +8,28 @@ function [total_forcex, total_forcey] = wallforce(xp,yp)
 
 
 k = 1;
+r = 0.5;
 
-
-%assumes 10,10 is centre of the room
+%assumes 0,0 is centre of the room
 wallx1 = 20;
-distancefromwallx1 = abs(wallx1 - xp);
+distancefromwallx1 = abs(wallx1 - xp)-r;
 wallx1force = -exp(-distancefromwallx1./k);
 
 wallx2 = 0;
-distancefromwallx2 = abs(wallx2 - xp);
+distancefromwallx2 = abs(wallx2 - xp)-r;
 wallx2force = exp(-distancefromwallx2./k);
 
 wally1 = 20;
-distancefromwally1 = abs(wally1 - yp);
-wally1force = -exp(-distancefromwally1./k);
+distancefromwally1 = abs(wally1 - yp)-r;
+if distancefromwallx1 > 9 & distancefromwallx2 > 9
+    wally1force = 0;
+else
+    wally1force = -exp(-distancefromwally1./k)-r;
+end
 
 wally2 = 0;
 distancefromwally2 = abs(wally2 - yp);
-wally2force = exp(-distancefromwally2./k);
+wally2force = exp(-distancefromwally2./k)-r;
 
 total_forcex = (wallx1force + wallx2force)./norm(wallx1force + wallx2force);
 total_forcey = (wally1force + wally2force)./norm(wally1force + wally2force);

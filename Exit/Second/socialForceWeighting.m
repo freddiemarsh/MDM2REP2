@@ -10,8 +10,7 @@ function [socialForceWeighting,optimal_alpha] = socialForceWeighting(filepath,tx
 % the relative weighting of each force
 
 [xp,yp,vx,vy,ax,ay] = filereader5(filepath);
-a0 = [1,1,1];
-median(median(xp))
+a0 = [1,1,1,1,1];
 
 if ~exist('tx','var')
     tx = NaN;
@@ -25,12 +24,19 @@ end
 
 [xforceprox,yforceprox] = nearest_person_force(xp,yp);
 [xforcewall, yforcewall] = wallforceWithGap(xp,yp);
+[xForceVelMatch,yForceVelMatch] = velocityMatching(xp,yp,vx,vy);
+[xFarForce,yFarForce] = FarForce(xp,yp);
+
+f = @(a,xforcewall,xforceprox,yforcewall,yforceprox,xForceVelMatch,yForceVelMatch,xFarForce,yFarForce,xforcenav,yforcenav) sum(sum(abs(a(1) .* xforcewall + a(2) .* xforceprox +a(3) * xForceVelMatch + a(4) * xFarForce + a(5) * xforcenav- ax)+abs(a(1) .* yforcewall + a(2) .* yforceprox + a(3) *yForceVelMatch + a(4) * yFarForce + a(5) * yforcenav - ay)));
+
+fun = @(a)f(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav,xFarForce,yFarForce,xForceVelMatch,yForceVelMatch);
 
 
-f = @(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav) sum(sum(abs(a(1) .* xforcewall + a(2) .* xforceprox +a(3) .* xforcenav - ax)+abs(a(1) .* yforcewall + a(2) .* yforceprox +a(3) .* yforcenav - ay)));
-fun = @(a)f(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav);
-optimal_alpha = fminsearch(fun,a0);
 
+
+
+%optimal_alpha = fminsearch(fun,a0);
+optimal_alpha = fmincon(fun,a0,[],[],[1,1,1,1,1],1,[0,0,0,0,0],[1,1,1,1,1]);
 
 
 socialForceWeighting = optimal_alpha/norm(optimal_alpha);
