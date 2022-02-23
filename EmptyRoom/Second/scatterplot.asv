@@ -1,5 +1,5 @@
 
-filepath = '/Users/freddiemarsh/Documents/ENGMATHS Y2/MDM2/Group REP 2/Text Reader/Output Data 2/Empty Room (ER)/ER_test3.txt';
+filepath = '/Users/freddiemarsh/Documents/ENGMATHS Y2/MDM2/Group REP 2/Text Reader/Output Data/Empty Room (ER)/ER_test9.txt';
 number = 10;
 [xp,yp,vx,vy,ax,ay] = filereader5(filepath);
 xarray = xp(:,number);
@@ -21,7 +21,7 @@ scatter(xarray,yarray,50,'k','filled','DisplayName','Particles'); hold on;
 [xForceVelMatch,yForceVelMatch] = velocityMatching(xp,yp,vx,vy);
 [xFarForce,yFarForce] = FarForce(xp,yp);
 
-%a2 = [0.4269,0.2010,0.0207,0.0776];
+a2 = [0.4269,0.2010,0.0207,0.0776];
 
 adjustedFWx = xforcewall * a(1);
 adjustedFPx = xforceprox * a(2);
