@@ -13,7 +13,7 @@ nRows = size(xp,1);
 nCol = size(xp,2);
 xNearForce = zeros([nRows,nCol]);
 yNearForce = zeros([nRows,nCol]);
-inner_radius = 2;
+inner_radius = 5;
 
 
 for j = 1:nCol
@@ -42,11 +42,11 @@ for j = 1:nCol
         
             relVolx(index) = 0;
             average_velocityx = sum(relVolx);
-            xNearForce(i,j) = sum(average_velocityx)/number_of_particles;
+            xNearForce(i,j) = sum(average_velocityx)-vx(i,j)/number_of_particles;
     
             relVoly(index) = 0;
             average_velocityy = sum(relVoly);
-            yNearForce(i,j) = sum(average_velocityy)/number_of_particles;
+            yNearForce(i,j) = sum(average_velocityy)-vy(i,j)/number_of_particles;
 
         end
         

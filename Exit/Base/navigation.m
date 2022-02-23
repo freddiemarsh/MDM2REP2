@@ -16,28 +16,28 @@ function [xforce,yforce] = navigation(xp,yp,tx,ty,vx,vy,desired_speed)
 % speed
 nRows = size(xp,1);
 nCol = size(xp,2);
-unitex = zeros([nRows,nCol]);
-unitey = zeros([nRows,nCol]);
+xforce = zeros([nRows,nCol]);
+yforce = zeros([nRows,nCol]);
 
 for j = 1:nCol
     for i = 1:nRows
         ex = tx - xp(i,j);
         ey = ty - yp(i,j);
-        unitex(i,j) = ex/norm(ex);
-        unitey(i,j) = ey/norm(ey);
+        if ex ~= 0
+            unitex = ex/norm(ex);
+            xforce(i,j) = (desired_speed.*unitex - vx(i,j));
+        else 
+            xforce(i,j) = 0;
+        end
+        if ey ~= 0 
+            unitey = ey/norm(ey);
+            yforce(i,j) = (desired_speed.*unitey - vy(i,j));
+        else
+            yforce(i,j) = 0;
+        end
+        
     end
 end
 
-xforce = (desired_speed.*unitex - vx)./norm((desired_speed.*unitex - vx));
-yforce = (desired_speed.*unitey - vy)./norm((desired_speed.*unitey - vy));
-
-
-
-
-
-
-
-
-
-
-
+xforce = xforce./norm(xforce);
+yforce = yforce./norm(yforce);

@@ -14,7 +14,7 @@ nRows = size(xp,1);
 nCol = size(xp,2);
 xFarForce = zeros([nRows,nCol]);
 yFarForce = zeros([nRows,nCol]);
-outer_radius = 10;
+outer_radius = 7.5;
 
 
 for j = 1:nCol
@@ -39,11 +39,11 @@ for j = 1:nCol
         
             nearx(index) = 0;
             average_positionx = sum(nearx);
-            xFarForce(i,j) = sum(average_positionx)/number_of_particles;
+            xFarForce(i,j) = sum(average_positionx)-xp(i,j)/number_of_particles;
     
             neary(index) = 0;
             average_positiony = sum(neary);
-            yFarForce(i,j) = sum(average_positiony)/number_of_particles;
+            yFarForce(i,j) = sum(average_positiony)-yp(i,j)/number_of_particles;
         end
 
         
