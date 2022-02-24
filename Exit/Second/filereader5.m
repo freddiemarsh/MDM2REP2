@@ -11,8 +11,8 @@ A = readmatrix(filepath);
 
 x_position_matrix = A(6:6:end,:)';
 y_position_matrix = A(7:6:end,:)';
-x_position_matrix = x_position_matrix(:,1:100);
-y_position_matrix = y_position_matrix(:,1:100);
+x_position_matrix = x_position_matrix(:,1:954);
+y_position_matrix = y_position_matrix(:,1:954);
 
 x_velocity_matrix = velocity_matrix(x_position_matrix);
 y_velocity_matrix = velocity_matrix(y_position_matrix);

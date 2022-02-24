@@ -1,4 +1,4 @@
-function [socialForceWeighting,optimal_alpha,x] = socialForceWeighting(filepath,tx,ty,desired_speed)
+function [socialForceWeightingVar,optimal_alpha,x] = socialForceWeighting(filepath,tx,ty,desired_speed)
 %% INPUTS
 %filepath = filepath of outputted data from a simulation
 % tx,ty (optional) = x and y coordinates of target destination for navigation
@@ -44,11 +44,11 @@ f = @(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav) sum(sum
 fun = @(a)f(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav);
 % optimal_alpha = fminsearch(fun,a0);
 
-optimal_alpha = fmincon(fun,a0,[],[],[],[],[0,0,0],[0,1,1]);
+optimal_alpha = fmincon(fun,a0,[],[],[],[],[0,0,0],[1,1,1]);
 
 
 
-socialForceWeighting = optimal_alpha/norm(optimal_alpha);
+socialForceWeightingVar = optimal_alpha/norm(optimal_alpha);
 
 x = fun(optimal_alpha);
 
