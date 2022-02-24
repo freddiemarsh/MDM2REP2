@@ -12,9 +12,18 @@ function [socialForceWeighting,optimal_alpha,x] = socialForceWeightingWithoutNav
 [xp,yp,vx,vy,ax,ay] = filereader5(filepath);
 a0 = [1,1];
 
+ax = ax(:,3:end);
+ay = ay(:,3:end);
 
 [xforceprox,yforceprox] = nearest_person_force(xp,yp);
 [xforcewall, yforcewall] = wallforce(xp,yp);
+
+
+xforceprox = xforceprox(:,3:end);
+yforceprox = yforceprox(:,3:end);
+
+xforcewall = xforcewall(:,3:end);
+yforcewall = yforcewall(:,3:end);
 
 
 f = @(a,xforcewall,xforceprox,yforcewall,yforceprox) sum(sum(abs(a(1) .* xforcewall + a(2) .* xforceprox - ax)+abs(a(1) .* yforcewall + a(2) .* yforceprox - ay)));

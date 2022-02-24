@@ -27,6 +27,19 @@ end
 [xforcewall, yforcewall] = wallforceWithGap(xp,yp);
 
 
+ax = ax(:,3:end);
+ay = ay(:,3:end);
+
+xforceprox = xforceprox(:,3:end);
+yforceprox = yforceprox(:,3:end);
+
+xforcewall = xforcewall(:,3:end);
+yforcewall = yforcewall(:,3:end);
+
+xforcenav = xforcenav(:,3:end);
+yforcenav = yforcenav(:,3:end);
+
+
 f = @(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav) sum(sum(abs(a(1) .* xforcewall + a(2) .* xforceprox +a(3) .* xforcenav - ax)+abs(a(1) .* yforcewall + a(2) .* yforceprox +a(3) .* yforcenav - ay)));
 fun = @(a)f(a,xforcewall,xforceprox,xforcenav,yforcewall,yforceprox,yforcenav);
 % optimal_alpha = fminsearch(fun,a0);
