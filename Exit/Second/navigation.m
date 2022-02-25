@@ -1,4 +1,6 @@
 function [xforce,yforce] = navigation(xp,yp,tx,ty,vx,vy,desired_speed)
+%NAVIGATION - function to calculate the navigational dampening force
+%guiding each particle towards a target
 %% OUTPUTS
 % xforce, yforce is the calculated attractive force produced by the target
 % destination

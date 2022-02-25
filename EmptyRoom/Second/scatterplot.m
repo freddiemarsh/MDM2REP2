@@ -49,7 +49,7 @@ adjustedFFy = adjustedFFy(:,number);
 
 
 quiver(xarray,yarray,15000*adjustedFWx,15000*adjustedFWy,0,'r','LineWidth',3,'DisplayName','Wall Force'); hold on;
-quiver(xarray,yarray,15000*adjustedFPx,15000*adjustedFPy,0,'g','LineWidth',3,'DisplayName','Proximity Force'); hold on;
+quiver(xarray,yarray,25000*adjustedFPx,25000*adjustedFPy,0,'g','LineWidth',3,'DisplayName','Proximity Force'); hold on;
 quiver(xarray,yarray,15000*adjustedFVx,15000*adjustedFVy,0,'b','LineWidth',3,'DisplayName','Velocity Matching Force'); hold on;
 quiver(xarray,yarray,15000*adjustedFFx,15000*adjustedFFy,0,'m','LineWidth',3,'DisplayName','Long Range Attractive Force'); hold on;
 xline(0,'LineWidth',3);

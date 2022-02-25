@@ -1,5 +1,8 @@
 function [xFarForce,yFarForce] = FarForce(xp,yp)
 
+% FARFORCE - function that takes the x and y coordinates and returns an
+% attractive force towards a mean position of distant particles
+
 %[xFarForce,yFarForce]
 %% OUTPUTS
 % xFarForce,yFarForce = A normalised matrix of the attractive force towards
@@ -7,7 +10,6 @@ function [xFarForce,yFarForce] = FarForce(xp,yp)
 
 %% INPUTS
 % xp,yp = column vectors of x and y position at a timestep
-
 
 
 nRows = size(xp,1);

@@ -1,4 +1,7 @@
 function [xforce,yforce] = nearest_person_force(xp,yp)
+%NEAREST_PERSON_FORCE = function to return the force generatd by a
+%particles proximity to it's nearest neighbour
+
 %% OUTPUTS
 % xforce,yforce = resulting repelant force from nearest person.
 

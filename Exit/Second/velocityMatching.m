@@ -1,4 +1,6 @@
 function [xNearForce,yNearForce] = velocityMatching(xp,yp,vx,vy)
+%VELOCITYMATCHING - function to find the velocity matching force
+%experienced by each particle at a timestep
 %% OUTPUTS
 % xNearForce,yNearForce = The normalised forces in the x and y direction resulting
 % from a velocity matching attractive force.

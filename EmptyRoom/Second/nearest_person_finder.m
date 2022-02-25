@@ -1,6 +1,8 @@
 function [xdistance,ydistance] = nearest_person_finder(xp,yp)
 
-%[xdistance,ydistance]
+%NEAREST_PERSON_FINDER = function to find the nearest particle to each
+%particle at every timestep and return the x and y distance between them
+
 %% OUTPUTS
 % xdistance,ydistance = column vectors of distance in x and y from nearest
 % particle

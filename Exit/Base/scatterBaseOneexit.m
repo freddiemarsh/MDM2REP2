@@ -20,37 +20,31 @@ scatter(tx,ty,750,'red','filled','DisplayName','Particles'); hold on;
 
 [xforceprox,yforceprox] = nearest_person_force(xp,yp);
 [xforcewall, yforcewall] = wallforceWithGap(xp,yp);
-[xForceVelMatch,yForceVelMatch] = velocityMatching(xp,yp,vx,vy);
-[xFarForce,yFarForce] = FarForce(xp,yp);
 [xforce,yforce] = navigation(xp,yp,tx,ty,vx,vy,desired_speed);
 
 
 
 adjustedFWx = xforcewall * a(1);
 adjustedFPx = xforceprox * a(2);
-adjustedFVx = xForceVelMatch *a(3);
-adjustedFFx = xFarForce *a(4);
-adjustedFNx = xforce *a(5);
+
+adjustedFNx = xforce *a(3);
 
 
 
 adjustedFWy = yforcewall * a(1);
 adjustedFPy = yforceprox * a(2);
-adjustedFVy = yForceVelMatch *a(3);
-adjustedFFy = yFarForce *a(4);
-adjustedFNy = yforce *a(5);
+
+adjustedFNy = yforce *a(3);
 
 
 adjustedFWx = adjustedFWx(:,number);
 adjustedFPx = adjustedFPx(:,number);
-adjustedFVx = adjustedFVx(:,number);
-adjustedFFx = adjustedFFx(:,number);
+
 adjustedFNx = adjustedFNx(:,number);
 
 adjustedFWy = adjustedFWy(:,number);
 adjustedFPy = adjustedFPy(:,number);
-adjustedFVy = adjustedFVy(:,number);
-adjustedFFy = adjustedFFy(:,number);
+
 adjustedFNy = adjustedFNy(:,number);
 
 
@@ -58,8 +52,6 @@ scalar = 1;
 
 quiver(xarray,yarray,scalar*adjustedFWx,scalar*adjustedFWy,0,'r','LineWidth',3,'DisplayName','Wall Force'); hold on;
 quiver(xarray,yarray,scalar*adjustedFPx,scalar*adjustedFPy,0,'g','LineWidth',3,'DisplayName','Proximity Force'); hold on;
-quiver(xarray,yarray,scalar*adjustedFVx,scalar*adjustedFVy,0,'b','LineWidth',3,'DisplayName','Velocity Matching Force'); hold on;
-quiver(xarray,yarray,scalar*adjustedFFx,scalar*adjustedFFy,0,'m','LineWidth',3,'DisplayName','Long Range Attractive Force'); hold on;
 quiver(xarray,yarray,scalar*adjustedFNx,scalar*adjustedFNy,0,'y','LineWidth',3,'DisplayName','Navigational Force'); hold on;
 xline(0,'LineWidth',3);
 xline(20,'LineWidth',3);

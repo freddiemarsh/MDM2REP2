@@ -1,4 +1,6 @@
 function [xFarForce,yFarForce] = FarForce(xp,yp)
+% FARFORCE - function that takes the x and y coordinates and returns an
+% attractive force towards a mean position of distant particles
 
 %[xFarForce,yFarForce]
 %% OUTPUTS

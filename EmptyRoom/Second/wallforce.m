@@ -1,11 +1,14 @@
 function [total_forcex, total_forcey] = wallforce(xp,yp)
+%WALLFORCE - function that calculates the force generated from a particles
+%proximity to a 'wall'
+
+
 %% OUTPUTS
-% xforce,yforce = resulting repelant force from walls.
+% total_forcex,total_forcey = resulting repelant forces from walls.
 
 %% INPUTS
 % xp,yp = a column vector of the x and y coordinates for each particle at
 % one point in time.
-
 
 k = 1;
 r = 0.5;

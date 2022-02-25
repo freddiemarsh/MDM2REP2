@@ -14,4 +14,3 @@ Results = [0.014468      0.19582    0.0036212      0.98052    0.0021072   7.6077
 Alpha = Results(:,6:10);
 NormalisedAlpha = results(:,1:5);
 x = Results(:,11);
-

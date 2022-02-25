@@ -1,4 +1,8 @@
 function [socialForceWeighting,optimal_alpha,x] = socialForceWeightingWithoutNav(filepath)
+%SOCIALFORCEWEIGHTINGWITHOUTNAV - function that returns the weightings of a
+%series of forces to best match the movement of particles interacting with
+%eachother and a space
+
 %% INPUTS
 %filepath = filepath of outputted data from a simulation
 % tx,ty (optional) = x and y coordinates of target destination for navigation
@@ -8,7 +12,10 @@ function [socialForceWeighting,optimal_alpha,x] = socialForceWeightingWithoutNav
 %% OUTPUTS
 % socialForceWeighting = a normalised vector of the coefficients denoting
 % the relative weighting of each force
-
+% optimal_alpha = vector of the coefficients denoting
+% the relative weighting of each force
+% x = the final value of the parameter being minimised
+%%
 [xp,yp,vx,vy,ax,ay] = filereader5(filepath);
 a0 = [1,1,1,1];
 
